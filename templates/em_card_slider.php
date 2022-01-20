@@ -13,8 +13,8 @@ $em_cards = get_field('em_cards');
 $dots = get_field('show_dots');
 ?>
 <div class="<?php echo esc_attr($className);?>">
-  <div class='prev em_card_button'></div>
-  <div class='next em_card_button'></div>
+  <span class='prev em_card_button'>&#8249;</span>
+  <span class='next em_card_button'>&#8250;</span>
   <div class='em_card_slide_show_wrap'>
   <?php if(!empty($em_cards)):?>
     <?php $slide_count = 0;?>

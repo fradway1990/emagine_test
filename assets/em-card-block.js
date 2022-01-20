@@ -1,44 +1,19 @@
 (function($){
-    let scroll_timer;
-    let jump_selection = false;
-    document.addEventListener('scroll', function (event) {
-        clearTimeout(scroll_timer);
-        scroll_timer  = setTimeout(function(){
-            if(typeof event.target.classList !== 'undefined' && event.target.classList.contains('em_card_slide_show_wrap')){
-                let dots = $(event.target).parent().find('.em_card_dots');
-                let scroll_pos = $(event.target).scrollLeft();
-                let children = $(event.target).children('.em_card_slide');
-                let slideshow_left = $(event.target).offset().left; 
-                for(var i = 0; i < children.length; i++){
-                        if(Math.abs($(children[i]).position().left) < 1){
-                            children.removeClass('current_slide');
-                            $(children[i]).addClass('current_slide');
-                            let child_id = $(children[i]).attr('id');
-                            console.log(dots);
-                            dots.children('li').removeClass('selected');
-                            $('#'+child_id+'_dot').addClass('selected');
-                            break;
-                        }
-                }
-            }
-        },66);
-    },true);
-
     $('body').on('click','.em_card_dots li',function(){
         let target = $(this).attr('data-for');
         target = $(target);
-        console.log(target.position().left);
+        let dot_index = $(this).index();
+        let card_width = $(this).parent().parent().find('.em_card_slide').width();
         $(this).parent().find('li').removeClass('selected');
         $(this).addClass('selected');
         target.parent().animate({
-            scrollLeft: target.position().left
+            scrollLeft: dot_index * card_width
           }, 50);
         target.parent().children('.em_card_slide').removeClass('current_slide');
         target.addClass('current_slide');
     });
 
     $('body').on('click','.em_card_button',function(){
-        
         let slideshow = $(this).parent().find('.em_card_slide_show_wrap');
         let scrollPos = slideshow.scrollLeft();
         let card_width = slideshow.find('.em_card_slide').width();
