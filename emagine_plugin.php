@@ -152,14 +152,6 @@ class Emagine_Plugin{
             false,
             false
         );
-        
-        wp_enqueue_script(
-            'slick-js',
-            plugin_dir_url( __FILE__ ) . 'assets/slick/slick.js',
-            array( 'wp-blocks', 'wp-element','jquery'),
-            false,
-            true
-        );
         wp_enqueue_script(
             'emagine-block-js',
             plugin_dir_url( __FILE__ ) . 'assets/em-card-block.js',
@@ -172,14 +164,6 @@ class Emagine_Plugin{
             'emagine-google-fonts',
             'https://fonts.googleapis.com/css2?family=Roboto:wght@400;900&display=swap',
             array(),
-            false,
-            'all'
-        );
-
-        wp_enqueue_style(
-            'slick-css',
-            plugin_dir_url( __FILE__ ) . 'assets/slick/slick.css',
-            array( 'wp-edit-blocks' ),
             false,
             'all'
         );
